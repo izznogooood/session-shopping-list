@@ -1,5 +1,5 @@
 <template id="shopping-lists">
-  <h1>Hello {{ text }}</h1>
+  <h1>Hello {{ $javalin.state.user }}</h1>
 </template>
 
 <script>
