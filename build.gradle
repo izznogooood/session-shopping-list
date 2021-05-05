@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+
+    /* Jetty - Plugin for getting jetty session handler */
+    id "org.gretty" version "3.0.4"
 }
 
 group 'org.example'
@@ -12,14 +15,10 @@ repositories {
 dependencies {
     /* Javelin Dependency */
     compile "org.slf4j:slf4j-simple:1.8.0-beta4"
-
-    /* Javelin Vue */
+    /* Javelin Vue Dependency*/
     compile "com.fasterxml.jackson.core:jackson-databind:2.10.3"
-
+    /* Javalin */
     compile 'io.javalin:javalin:3.13.6'
-
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
 
 test {
