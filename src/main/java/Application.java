@@ -18,15 +18,11 @@ public class Application {
             config.sessionHandler(Application::fileSessionHandler);
         }).start(7000);
 
-        /* only load the required dependencies for your route component. */
+        /* only load the required dependencies for the requested Vue component. */
         JavalinVue.optimizeDependencies = true;
 
-
-
-
+        /* Passing a state / store object to the Vue instance */
         JavalinVue.stateFunction = ctx -> Map.of("sessionId", ctx.req.getSession().getId());
-
-
 
         /* Main page with shopping carts */
         app.get("/", new VueComponent("shopping-lists"));
@@ -52,7 +48,7 @@ public class Application {
         return sessionHandler;
     }
 
-    static FileSessionDataStore fileSessionDataStore() {
+    static FileSessionDataStore fileSessionDataStore() throws SecurityException {
         FileSessionDataStore fileSessionDataStore = new FileSessionDataStore();
         File baseDir = new File(System.getProperty("java.io.tmpdir"));
         File storeDir = new File(baseDir, "javalin-session-store");

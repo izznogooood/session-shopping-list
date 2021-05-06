@@ -9,7 +9,6 @@
     data: () => ({
       text: "World"
     })
-
   });
 </script>
 
