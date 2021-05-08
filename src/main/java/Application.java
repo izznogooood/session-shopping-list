@@ -2,14 +2,14 @@ import io.javalin.Javalin;
 import io.javalin.plugin.rendering.vue.JavalinVue;
 import io.javalin.plugin.rendering.vue.VueComponent;
 
+import models.Business;
 import org.eclipse.jetty.server.session.DefaultSessionCache;
 import org.eclipse.jetty.server.session.FileSessionDataStore;
 import org.eclipse.jetty.server.session.SessionCache;
 import org.eclipse.jetty.server.session.SessionHandler;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -21,8 +21,28 @@ public class Application {
         /* only load the required dependencies for the requested Vue component. */
         JavalinVue.optimizeDependencies = true;
 
-        /* Passing a state / store object to the Vue instance */
-        JavalinVue.stateFunction = ctx -> Map.of("sessionId", ctx.req.getSession().getId());
+        // mock repo
+        HashMap<String, List<Business>> sessions = new HashMap<>();
+
+        /* Passing a state / store object to the Vue instance
+        *  Run once every request */
+        JavalinVue.stateFunction = ctx -> {
+            // Creating mocking data
+            if (sessions.containsKey(ctx.req.getSession().getId())) {
+                List<Business> businesses = sessions.get(ctx.req.getSession().getId());
+            } else {
+                sessions.put(ctx.req.getSession().getId(), Arrays.asList(
+                        new Business(ctx.req.getSession().getId(), "Rema 1000"),
+                        new Business(ctx.req.getSession().getId(), "Coop Obs")
+                ));
+            }
+
+
+            return Map.of(
+                    "sessionId", ctx.req.getSession().getId(),
+                    "businesses", sessions.get(ctx.req.getSession().getId())
+            );
+        };
 
         /* Main page with shopping carts */
         app.get("/", new VueComponent("shopping-lists"));

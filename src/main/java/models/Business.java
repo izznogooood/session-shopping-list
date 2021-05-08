@@ -9,6 +9,7 @@ public class Business {
     private final ArrayList<ListItem> shoppingList = new ArrayList<>();
 
     public Business(String sessionId, String name) {
+        this.sessionId = sessionId;
         this.name = name;
     }
 
