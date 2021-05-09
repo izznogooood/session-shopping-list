@@ -19,18 +19,18 @@
       </thead>
       <tbody>
         <tr
-            v-for="(item, i) in $javalin.state.businesses[businessId].shoppingList"
-            :key="i"
+            v-for="item in $javalin.state.businesses[businessId].shoppingList"
+            :key="item.id"
         >
           <td>{{ item.quantity }}</td>
           <td>{{ item.name }}</td>
           <td>
-            <span style="font-size: 16px; color: dimgrey;">
+            <span @click="editItem(item.id)" style="font-size: 16px; color: dimgrey;  cursor: pointer">
               <i class="fas fa-edit"></i>
             </span>
           </td>
           <td>
-            <span style="font-size: 16px; color: dimgrey;">
+            <span @click="removeItem(item.id)" style="font-size: 16px; color: dimgrey; cursor: pointer">
               <i class="fas fa-trash-alt"></i>
             </span>
           </td>
@@ -46,6 +46,14 @@
     vuetify: new Vuetify(),
     props: ['businessId'],
     data: () => ({}),
+    methods: {
+      editItem(id) {
+        console.log(id)
+      },
+      removeItem(id) {
+        console.log(id)
+      }
+    }
   });
 </script>
 

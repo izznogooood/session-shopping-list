@@ -1,6 +1,6 @@
 <template id="shopping-lists">
   <v-row justify="center">
-    <v-subheader>Shopping lists</v-subheader>
+    <v-subheader>Cart collections</v-subheader>
 
     <v-expansion-panels popout>
       <v-expansion-panel
@@ -43,7 +43,7 @@
             >
               <strong v-html="business.name"></strong>
 
-              <!-- Items in list -->
+              <!-- "badge" items in list -->
               <span
                   v-if="business.shoppingList.length"
                   class="grey--text"
@@ -57,21 +57,40 @@
                 v-if="preview"
                 class="grey--text text-truncate hidden-xs-only"
             >
-              &mdash;
               {{ preview }}
             </v-col>
           </v-row>
         </v-expansion-panel-header>
 
-        <v-expansion-panel-content>
+        <v-expansion-panel-content class="text-center">
 
-          <!-- Passing props in kebab-case (html is case insensitive),
-          Vue converts them to camelCase in Component -->
-          <list-item-table :business-id="i" id="i"></list-item-table>
+          <!--
+          !!!! List Items Table !!!!
+          Passing props in kebab-case (html is not case insensitive),
+          Vue converts them to camelCase in Component
+          -->
+          <list-item-table v-if="business.shoppingList.length" :business-id="i" id="i"></list-item-table>
+          <v-subheader v-else>No items in this collection...</v-subheader>
 
+          <!-- Add list item -->
+          <v-avatar
+              @click="addItem(business.name)"
+              :color="business.accent"
+              size="36px"
+              style="cursor: pointer;"
+              class="mt-3"
+          >
+            <v-icon
+                :color="business.color"
+            >mdi-plus
+            </v-icon>
+          </v-avatar>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
+    <span @click="addBusiness()" style="font-size: 48px; cursor: pointer; font-weight: 300;">
+       +
+    </span>
   </v-row>
 </template>
 
@@ -82,7 +101,16 @@
     data: () => ({
       preview: "Tomatoes, onions, cheddar, chunky burger souce ..."
     }),
+    methods: {
+      addBusiness() {
+        console.log('Adding business.....')
+      },
+      addItem(name) {
+        console.log('Adding item.....')
+      }
+    },
     mounted() {
+      // TODO: Remove
       console.log(this.$javalin.state.businesses)
     }
   });

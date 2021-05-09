@@ -10,6 +10,9 @@ public class ListItem implements Comparable<ListItem> {
     private int quantity;
     private String name;
 
+    // Empty constructor for
+    public ListItem() {}
+
     public ListItem(int quantity, String name) {
         this.quantity = quantity;
         this.name = name;
