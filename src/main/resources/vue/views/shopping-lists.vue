@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template id="shopping-lists">
   <v-row justify="center">
     <v-subheader>Cart collections</v-subheader>
@@ -71,8 +72,8 @@
           Passing props in kebab-case (html is not case insensitive),
           Vue converts them to camelCase in Component
           -->
-          <list-item-table v-if="business.shoppingList.length" :business-id="i" id="i"></list-item-table>
-          <v-subheader fluid class="justify-center">No items in this collection...</v-subheader>
+          <list-item-table v-if="business.shoppingList.length" :business-id="i"></list-item-table>
+          <v-subheader v-else class="justify-center">No items in this collection...</v-subheader>
 
           <!-- Add list item -->
           <v-avatar
@@ -82,6 +83,7 @@
               style="cursor: pointer;"
               class="mt-3"
           >
+
             <v-icon
                 :color="business.color"
             >mdi-plus

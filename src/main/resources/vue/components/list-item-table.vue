@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template id="list-item-table">
   <v-simple-table>
     <template v-slot:default>

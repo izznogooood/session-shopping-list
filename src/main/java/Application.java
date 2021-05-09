@@ -15,13 +15,7 @@ import java.util.*;
 public class Application {
     public static void main(String[] args) {
         /* Main server app */
-        Javalin app = Javalin.create(config -> {
-            config.sessionHandler(Application::fileSessionHandler);
-        }).start(7000);
-
-
-        /* only load the required dependencies for the requested Vue component. */
-//        JavalinVue.optimizeDependencies = true;
+        Javalin app = Javalin.create(config -> config.sessionHandler(Application::fileSessionHandler)).start(7000);
 
         // mock repo/storage
         HashMap<String, List<Business>> sessions = new HashMap<>();

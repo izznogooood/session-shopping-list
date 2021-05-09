@@ -10,7 +10,7 @@ public class ListItem implements Comparable<ListItem> {
     private int quantity;
     private String name;
 
-    // Empty constructor for
+    // Empty constructor for Jackson
     public ListItem() {}
 
     public ListItem(int quantity, String name) {

@@ -11,6 +11,9 @@ public class Business {
     private String accent;
     private List<ListItem> shoppingList = new ArrayList<>();
 
+    // Empty constructor for Jackson
+    public Business() {}
+
     public Business(String sessionId, String name, String icon, String color, String accent) {
         this.sessionId = sessionId;
         this.name = name;
