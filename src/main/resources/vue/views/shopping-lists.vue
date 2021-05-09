@@ -1,8 +1,9 @@
 <template id="shopping-lists">
   <v-row justify="center">
     <v-subheader>Cart collections</v-subheader>
-
     <v-expansion-panels popout>
+
+      <!-- Businesses-->
       <v-expansion-panel
           v-for="(business, i) in this.$javalin.state.businesses"
           :key="i"
@@ -52,6 +53,7 @@
                 </span>
             </v-col>
 
+            <!-- Preview items if > xs screen -->
             <!-- TODO Create a preview function (IF business.shoppingList.lenth) -->
             <v-col
                 v-if="preview"
@@ -70,7 +72,7 @@
           Vue converts them to camelCase in Component
           -->
           <list-item-table v-if="business.shoppingList.length" :business-id="i" id="i"></list-item-table>
-          <v-subheader v-else>No items in this collection...</v-subheader>
+          <v-subheader fluid class="justify-center">No items in this collection...</v-subheader>
 
           <!-- Add list item -->
           <v-avatar

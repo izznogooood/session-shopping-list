@@ -23,7 +23,7 @@
             :key="item.id"
         >
           <td>{{ item.quantity }}</td>
-          <td>{{ item.name }}</td>
+          <td class="text-left">{{ item.name }}</td>
           <td>
             <span @click="editItem(item.id)" style="font-size: 16px; color: dimgrey;  cursor: pointer">
               <i class="fas fa-edit"></i>
