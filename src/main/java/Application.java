@@ -32,6 +32,8 @@ public class Application {
                 // Creating mock data
                 sessions.put(ctx.req.getSession().getId(), Arrays.asList(
                         new Business(ctx.req.getSession().getId(), "Rema 1000", "mdi-cart", "indigo darken-1", "white", Arrays.asList(new ListItem(2, "Tomatoes"), new ListItem(1, "Cucumberbaches"))),
+                        new Business(ctx.req.getSession().getId(), "Meny", "mdi-cart", "red", "white", Arrays.asList(new ListItem(2, "Tomatoes"), new ListItem(1, "Cucumberbaches"))),
+                        new Business(ctx.req.getSession().getId(), "Spar", "mdi-cart", "white", "red", Arrays.asList(new ListItem(2, "Tomatoes"), new ListItem(1, "Cucumberbaches"))),
                         new Business(ctx.req.getSession().getId(), "Kiwi", "mdi-cart", "green", "white"),
                         new Business(ctx.req.getSession().getId(), "EXTRA", "mdi-cart", "red", "yellow"),
                         new Business(ctx.req.getSession().getId(), "Coop Mega", "mdi-cart", "white", "green darken-2", Arrays.asList(new ListItem(2, "Bananas")))
